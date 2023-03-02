@@ -1,8 +1,9 @@
 export class MyDate {
   // TODO: typescript solicita que siempre se inicialien las variables
-  private year: number;
-  private month: number;
-  private day: number;
+  year: number;
+  month: number;
+  // FIXED: readonly day: number; da error para poder modificar internamente
+  day: number;
 
   constructor(year: number, month: number, day: number) {
     this.year = year;
@@ -34,3 +35,6 @@ console.log(myDate.printFormat());
 
 myDate.add(1, 'mounths');
 console.log(myDate.printFormat());
+
+// TODO: es pelñigroso asignar desde afuera una variable de una clase
+// myDate.day = 12
