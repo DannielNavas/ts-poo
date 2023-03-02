@@ -11,7 +11,7 @@ date2.toISOString();
 console.log(date2);
 console.log(date);
 // TODO: ya se soporta desde ES6 esto se coloca en el tsconfig > target: "es6"
-class MyDate {
+export class MyDate {
   // TODO: typescript solicita que siempre se inicialien las variables
   year: number;
   month: number;
