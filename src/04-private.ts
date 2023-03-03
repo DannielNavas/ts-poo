@@ -12,7 +12,9 @@ export class MyDate {
   }
 
   printFormat(): string {
-    return `${this.year}-${this.month}-${this.day}`;
+    const day = this.addPadding(this.day);
+    const month = this.addPadding(this.month);
+    return `${this.year}-${month}-${day}`;
   }
   add(amount: number, type: 'days' | 'mounths' | 'years'): void {
     if (type === 'days') {
@@ -43,6 +45,10 @@ export class MyDate {
   }
   setYear(year: number): void {
     this.year = year;
+  }
+
+  private addPadding(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
   }
 }
 
