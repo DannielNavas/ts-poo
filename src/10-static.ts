@@ -11,4 +11,5 @@ export class MyMath {
 }
 
 console.log(MyMath.PI);
-console.log(MyMath.max(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+const numbers = [-1, -8, -9, -10];
+console.log(MyMath.max(...numbers));
