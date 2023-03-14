@@ -1,8 +1,9 @@
 import { faker } from '@faker-js/faker';
 import { CreateProductDto, UpdateProductDto } from '../dtos/product.dto';
+import { ProductServices } from '../models/product.services.model';
 import { Product } from '../product.model';
 
-export class ProductMemoryService {
+export class ProductMemoryService implements ProductServices {
   private products: Product[] = [];
 
   create(data: CreateProductDto): Product {
@@ -25,7 +26,7 @@ export class ProductMemoryService {
     return product;
   }
 
-  updatedProduct(id: string | number, changes: UpdateProductDto): Product {
+  update(id: string | number, changes: UpdateProductDto): Product {
     const index = this.products.findIndex((product) => product.id === id);
     const prevData = this.products[index];
     this.products[index] = {
