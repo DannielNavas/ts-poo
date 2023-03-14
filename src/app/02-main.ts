@@ -14,7 +14,7 @@ productMemoryService.create({
 const products = productMemoryService.getAll();
 const productId = products[0].id;
 
-productMemoryService.updatedProduct(productId, {
+productMemoryService.update(productId, {
   title: 'cambiar nombre',
 });
 
