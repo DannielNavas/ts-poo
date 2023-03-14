@@ -1,11 +1,16 @@
 import axios from 'axios';
 import { Category } from '../category.model';
+import { UpdateProductDto } from '../dtos/product.dto';
 import { Product } from '../product.model';
 export class BaseHttpService<TypeClass> {
   // data: TypeClass[] = [];
-  constructor(private url: string) {}
+  constructor(protected url: string) {}
   async getAll() {
     const { data } = await axios.get<TypeClass[]>(this.url);
+    return data;
+  }
+  async update<ID, DTO>(id: ID, changes: DTO): Promise<Product> {
+    const { data } = await axios.put<Product>(`${this.url}/${id}`, changes);
     return data;
   }
 }
@@ -23,6 +28,8 @@ export class BaseHttpService<TypeClass> {
   );
 
   console.log(await (await productService.getAll()).length);
+
+  productService.update<Product['id'], UpdateProductDto>(1, { title: 'test' });
 
   const categoryService = new BaseHttpService<Category>(
     'https://api.escuelajs.co/api/v1/categories'
